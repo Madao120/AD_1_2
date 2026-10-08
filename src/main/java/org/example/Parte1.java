@@ -5,9 +5,9 @@ import java.io.*;
 public class Parte1 {
 
     // 1 Crear un archivo con contenido (no me di cuenta de que no pedía método)
-    public static void uno(String[] args) {
+    public static void main(String[] args) {
         String ruta = "C:\\Users\\DIEGO CURRÁS\\Desktop\\DAM2\\Acceso_Datos\\Trimestre_1\\texto1.txt";
-        String contenido = "TANJIRO \nNezuko\n Muzan\n";
+        String contenido = "Tanjiro \nNezuko \nMuzan\n";
 
         try (BufferedWriter escritor = new BufferedWriter(new FileWriter(ruta))) {
             escritor.write(contenido);
@@ -18,9 +18,12 @@ public class Parte1 {
     }
 
     // 2 Copiar archivo byte a byte usando un bucle por cada byte hasa que no queden
-    public static void dos(String[] args) {
-        File origen = new File("C:\\Users\\DIEGO CURRÁS\\Desktop\\DAM2\\Acceso_Datos\\Trimestre_1\\texto1.txt");
-        File destino = new File("C:\\Users\\DIEGO CURRÁS\\Desktop\\DAM2\\Acceso_Datos\\Trimestre_1\\texto2.txt");
+    // origen "C:\\Users\\DIEGO CURRÁS\\Desktop\\DAM2\\Acceso_Datos\\Trimestre_1\\texto1.txt"
+    //destino "C:\\Users\\DIEGO CURRÁS\\Desktop\\DAM2\\Acceso_Datos\\Trimestre_1\\texto2.txt"
+
+    public static void copiaArchivo(String ruta_origen, String ruta_destino) {
+        File origen = new File(ruta_origen);
+        File destino = new File(ruta_destino);
 
         try (FileInputStream in = new FileInputStream(origen);
              FileOutputStream out = new FileOutputStream(destino)) {
@@ -38,9 +41,12 @@ public class Parte1 {
     }
 
     // 3 Añade contenido en ved de sustituirlo
-    public static void tres(String[] args) {
-        File origen = new File("C:\\Users\\DIEGO CURRÁS\\Desktop\\DAM2\\Acceso_Datos\\Trimestre_1\\texto1.txt");
-        File destino = new File("C:\\Users\\DIEGO CURRÁS\\Desktop\\DAM2\\Acceso_Datos\\Trimestre_1\\texto2.txt");
+    // origen "C:\\Users\\DIEGO CURRÁS\\Desktop\\DAM2\\Acceso_Datos\\Trimestre_1\\texto1.txt"
+    //destino "C:\\Users\\DIEGO CURRÁS\\Desktop\\DAM2\\Acceso_Datos\\Trimestre_1\\texto3.txt"
+
+    public static void addArchivo(String ruta_origen, String ruta_destino) {
+        File origen = new File(ruta_origen);
+        File destino = new File(ruta_destino);
 
         try (FileInputStream in = new FileInputStream(origen);
              FileOutputStream out = new FileOutputStream(destino, true)) {
@@ -56,5 +62,4 @@ public class Parte1 {
             System.out.println("Ocurrió un error: " + e.getMessage());
         }
     }
-
 }
